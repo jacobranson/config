@@ -50,7 +50,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.gh.enable = true;
+    # prefer the package over the module since
+    # gh likes to manage its own config imperatively.
+    home.packages = [ pkgs.gh ];
 
     internal.features.impermanence.directories = [
       ".config/gh"
