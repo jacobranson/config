@@ -29,11 +29,10 @@ gh repo clone config ~/Projects/config
 
 ## Secure Boot
 
-- `bootctl status` (should be disabled)
-- `nh os switch` (will download stuff, also enables secure-boot)
+- `bootctl status` (secure boot should be disabled)
 - `sudo sbctl create-keys`
-- `nh os switch` (will use the keys we just generated)
-- `sudo sbctl verify` (ignore bzImage.efi)
+- `nh os switch` (will enable secure boot)
+- `sudo sbctl verify` (all but one should be good)
 - reboot mashing F2
 - Select "Administer Secure Boot"
 - Select "Erase all Secure Boot Settings"
@@ -47,8 +46,8 @@ gh repo clone config ~/Projects/config
 - Press F10 to save and exit
 - `sudo sbctl enroll-keys --microsoft`
 - reboot
-- `bootctl status` (should be enabled)
-- `ls -l /sys/firmware/efi/efivars/dbx*` (should have data)
-- `ujust _setup-tpm` (change the device arg if needed)
+- `bootctl status` (secure boot should be enabled)
+- `ls -l /sys/firmware/efi/efivars/dbx*` (should output something)
+- `ujust _setup-tpm` (removes need to enter luks password; change the device arg if needed)
 - enter passphrase for decrypting disk
 - reboot (no more passphrase needed!)
