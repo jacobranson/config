@@ -42,12 +42,12 @@ in {
       boot.initrd.systemd.enable = true;
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
-    })
-    (mkIf cfg.secure-boot {
+
       # sbctl for debugging and troubleshooting Secure Boot.
       # tpm2-tss for interacting with the tpm secure enclave.
       environment.systemPackages = [ pkgs.sbctl pkgs.tpm2-tss ];
-
+    })
+    (mkIf cfg.secure-boot {
       # Lanzaboote currently replaces the systemd-boot module.
       # This setting is usually set to true in configuration.nix
       # generated at installation time. So we force it to false
