@@ -29,10 +29,7 @@ let
   cfg = config.internal.features.nix;
 in 
 {
-  options.internal.features.nix = with types; {
-    enable = mkBoolOpt' true;
-    packages = mkOpt' (listOf anything) [];
-  };
+  options.internal.features.nix = with types; {};
 
   config = mkIf cfg.enable {
     inputs.home-manager.useGlobalPkgs = true;
@@ -41,7 +38,7 @@ in
     nix = {
       # ref: https://mynixos.com/nixpkgs/options/nix
 
-      enable = cfg.enable;
+      channel.enable = false;
 
       # Populate Nix channels with this flake's nixpkgs revision only.
       # Ensures that legacy Nix CLI commands can and only use this flake's instance of Nixpkgs.

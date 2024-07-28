@@ -41,5 +41,9 @@ in {
       else "/home/${cfg.username}"
     );
     home.stateVersion = cfg.version;
+    home.activation.cleanup-nix = hm.dag.entryAfter ["writeBoundary"] ''
+      rm -rf ~/.nix-defexpr
+      rm -rf ~/.nix-profile
+    '';
   };
 }

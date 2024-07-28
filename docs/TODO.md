@@ -1,7 +1,6 @@
 # TODO
 
 - zfs auto-decrypt dataset with tpm
-- what is .nix-profile supposed to point to?
 - how to hide mounts for home folders?
 - Use [systemd paths](https://mynixos.com/nixpkgs/options/systemd.paths.%3Cname%3E) to watch for changes to the following files and auto copy them to/from `/persist`
   - `.local/share/recently-used.xbel`
