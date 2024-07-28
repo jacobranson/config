@@ -33,21 +33,16 @@
 # and add it to the list of files copied over to the target
 # system before rebooting into the new OS for the first time.
 
-
 # NOTICE
 # Using a local copy of nixos-anywhere due to this
 # bug in upstream nix:
 # https://github.com/nix-community/nixos-anywhere/issues/347
 #
-# TODO remove this workaround
+# TODO remove this workaround when the bug is fixed
 
 
 mkShell {
   shellHook = ''
-    echo "Set the following environment variables"
-    echo "user hostname arch ip"
-    echo "then run bootstrap to install to the target system"
-
     export EDITOR="hx"
     export RULES="./secrets.nix"
 
@@ -60,26 +55,18 @@ mkShell {
     }
 
     bootstrap() {
-      # Temp directory for extra files
-
       temp=$(mktemp -d)
       cleanup() {
         rm -rf "$temp"
       }
       trap cleanup EXIT
 
-      # SSH host heys
-
       ssh="$temp/persist/etc/ssh"
       key="$ssh/ssh_host_ed25519_key"
 
       mkdir -p "$ssh" && chmod 755 "$ssh"
-      sysdecrypt ssh_host_ed25519_key > "$key"
-      chmod 600 "$key"
-      openssl pkey -in "$key" -pubout > "$key.pub"
-      chmod 644 "$key.pub"
-
-      # Install on target system
+      sysdecrypt ssh_host_ed25519_key > "$key" && chmod 600 "$key"
+      openssl pkey -in "$key" -pubout > "$key.pub" && chmod 644 "$key.pub"
 
       ./shells/bootstrap/nixos-anywhere.sh "root@$ip" \
         --flake ".#$hostname" \
@@ -91,21 +78,6 @@ mkShell {
         --option eval-cache false \
         --option show-trace true \
         "$@"
-    }
-
-    postinstall() {
-      user="$(whoami)"
-      system="$(hostname)"
-      arch="$(arch)-linux"
-
-      key="$HOME/.ssh/id_ed25519"
-
-      # Configure user SSH key
-
-      sysdecrypt "users/$user/id_ed25519.age" > "$key"
-      chmod 600 "$key"
-      openssl pkey -in "$key" -pubout > "$key.pub"
-      chmod 644 "$key.pub"
     }
   '';
 

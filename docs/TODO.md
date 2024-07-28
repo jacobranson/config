@@ -1,6 +1,5 @@
 # TODO
 
-- how to get user ssh key onto system before first boot?
 - zfs auto-decrypt dataset with tpm
 - what is .nix-profile supposed to point to?
 - how to hide mounts for home folders?

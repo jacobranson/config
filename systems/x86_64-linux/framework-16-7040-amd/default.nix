@@ -37,6 +37,9 @@ in {
     "users/jacobranson/password" = {
       file = ./secrets/users/jacobranson/password.age;
     };
+    "users/jacobranson/id_ed25519" = {
+      file = ./secrets/users/jacobranson/id_ed25519.age;
+    };
   };
 
   internal.defaults.users.users = {

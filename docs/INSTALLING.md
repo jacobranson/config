@@ -2,13 +2,12 @@
 
 ## On the target machine
 
-- ??? reboot and configure tpm
-- Reboot mashing F2
+- Boot mashing F2
 - Select "Administer Secure Boot"
 - Disable "Enforce Secure Boot"
-- ??? Clear Secure boot stuff
 - Press F10 to save and exit
-- boot using Ventoy into nixos gnome iso
+- Boot mashing F2
+- Boot using Ventoy into nixos gnome iso
 
 ```bash
 # switch to the root user
