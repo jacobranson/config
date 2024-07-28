@@ -38,8 +38,6 @@ in
     nix = {
       # ref: https://mynixos.com/nixpkgs/options/nix
 
-      channel.enable = false;
-
       # Populate Nix channels with this flake's nixpkgs revision only.
       # Ensures that legacy Nix CLI commands can and only use this flake's instance of Nixpkgs.
       nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
