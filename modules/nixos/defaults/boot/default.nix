@@ -43,9 +43,17 @@ in {
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
+      # secure boot configs are kept here in the common
+      # module because secure-boot must be set to false
+      # for the first system boot.
+
       # sbctl for debugging and troubleshooting Secure Boot.
       # tpm2-tss for interacting with the tpm secure enclave.
       environment.systemPackages = [ pkgs.sbctl pkgs.tpm2-tss ];
+
+      # secureboot keys are generated manually after first boot
+      # and stored here.
+      internal.features.impermanence.directories = [ "/etc/secureboot" ];
     })
     (mkIf cfg.secure-boot {
       # Lanzaboote currently replaces the systemd-boot module.
@@ -57,8 +65,6 @@ in {
         enable = true;
         pkiBundle = "/etc/secureboot";
       };
-
-      internal.features.impermanence.directories = [ "/etc/secureboot" ];
     })
     (mkIf cfg.silent-boot {
       # hides boot logs behind a loading screen
