@@ -51,3 +51,10 @@ gh repo clone config ~/Projects/config
 - `ujust _setup-tpm` (removes need to enter luks password; change the device arg if needed)
 - enter passphrase for decrypting disk
 - reboot (no more passphrase needed!)
+
+## Cleanup
+
+```bash
+# remove the non-secure-boot first generation
+nh clean all
+```
