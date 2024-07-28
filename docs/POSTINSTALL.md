@@ -14,11 +14,7 @@ fprintd-enroll
 ## User SSH Keys
 
 ```bash
-key="$HOME/.ssh/id_ed25519"
-sudo cat /run/agenix/users/$(whoami)/id_ed25519 > "$key"
-chmod 600 "$key"
-nix-shell -p openssl --command "openssl pkey -in $key -pubout > $key.pub"
-chmod 644 "$key.pub"
+ujust _setup-ssh
 ```
 
 ## GitHub CLI & Cloning Config
@@ -53,6 +49,6 @@ gh repo clone config ~/Projects/config
 - reboot
 - `bootctl status` (should be enabled)
 - `ls -l /sys/firmware/efi/efivars/dbx*` (should have data)
-- `sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+2+7+12 --wipe-slot=tpm2 /dev/nvme0n1p3` (replace p3 at the end with the encrypted partition number if needed)
+- `ujust _setup-tpm` (change the device arg if needed)
 - enter passphrase for decrypting disk
 - reboot (no more passphrase needed!)
