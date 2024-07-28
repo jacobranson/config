@@ -1,19 +1,26 @@
+# refs:
+#   - http://redsymbol.net/articles/unofficial-bash-strict-mode/
+
 _default:
   @just --justfile /etc/Justfile --list --unsorted
 
 # For first time setup of a new system. Decrypts user ssh
 # private key, determines public key, and configures them both.
 _setup-ssh:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  IFS=$'\n\t'
+
   key="$HOME/.ssh/id_ed25519"
   sudo cat /run/agenix/users/$(whoami)/id_ed25519 > "$key"
   chmod 600 "$key"
-  nix-shell -p openssl --command "openssl pkey -in $key -pubout > $key.pub"
+  ssh-keygen -f "$key" -y > "$key.pub"
   chmod 644 "$key.pub"
 
 # For first time setup of a new system. Enrolls the luks decryption
 # password into TPM, removing the need to enter the disk encryption
 # password on each boot.
-_setup-tpm device=/dev/nvme0n1p3:
+_setup-tpm device="/dev/nvme0n1p3":
   sudo systemd-cryptenroll \
     --tpm2-device=auto \
     --tpm2-pcrs=0+2+7+12 \
