@@ -1,0 +1,31 @@
+{
+  "explorer.compactFolders": false,
+  "markdown.preview.doubleClickToSwitchToEditor": false,
+  "material-icon-theme.files.associations": {
+    "Justfile": "Makefile"
+  },
+  "material-icon-theme.folders.associations": {
+    "homes": "home",
+    "overlays": "meta",
+    "shells": "scripts",
+    "systems": "client",
+    "applications": "app",
+    "defaults": "config",
+    "game": "console",
+    "boot": "target",
+    "networking": "connection",
+    "nix": "container",
+    "ssh": "secure",
+    "luks": "secure",
+    "users": "admin",
+    "filesystems": "dump",
+    "desktops": "desktop",
+    "features": "components",
+    "media": "audio",
+    "bitcoin": "contract",
+    "darwin": "macos",
+    "nixos": "linux",
+    "aarch64-darwin": "macos",
+    "x86_64-linux": "linux"
+  }
+}

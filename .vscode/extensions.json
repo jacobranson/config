@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "jnoortheen.nix-ide",
+    "brettm12345.nixfmt-vscode",
+    "github.github-vscode-theme",
+    "pkief.material-icon-theme",
+  ]
+}

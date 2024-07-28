@@ -1,0 +1,46 @@
+_default:
+  @just --justfile /etc/Justfile --list --unsorted
+
+# Shows all fonts currently installed.
+show-fonts:
+  fc-list : family | sort | uniq | less
+
+# Shows all GNOME extensions currently installed.
+show-gnome-extensions:
+  gnome-extensions list | less
+
+# Shows all .desktop files from installed Nix and Flatpak apps.
+show-desktop-files:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  IFS=$'\n\t'
+
+  sudo ls -A1 2> /dev/null \
+    /run/current-system/sw/share/applications/*.desktop \
+    /var/lib/flatpak/app/*/current/active/files/share/applications/*.desktop \
+  | while read path; do basename "$path"; done | less || true
+
+# Shows all IOMMU devices.
+show-iommu:
+  #! /usr/bin/env bash
+  set -euo pipefail
+  IFS=$'\n\t'
+
+  shopt -s nullglob
+  for d in /sys/kernel/iommu_groups/*/devices/*; do
+      n=${d#*/iommu_groups/*}; n=${n%%/*}
+      printf 'IOMMU Group %s ' "$n"
+      lspci -nns "${d##*/}"
+  done | less;
+
+# Saves monitor configuration to the persistent partition.
+save-monitors-config:
+  cp ~/.config/monitors.xml "/persist/${HOME}/.config"
+
+# Loads monitor configuration from the persistent partition.
+load-monitors-config:
+  cp "/persist/${HOME}/.config/monitors.xml" ~/.config
+
+# Watch for changes made to the dconf database.
+watch-dconf:
+  dconf watch /
