@@ -25,4 +25,5 @@
   internal.features.comma.enable = true;
   internal.features.devbox.enable = true;
   internal.features.gh.enable = true;
+  internal.applications.vscode.enable = true;
 }
