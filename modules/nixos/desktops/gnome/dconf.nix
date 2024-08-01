@@ -8,12 +8,22 @@ let
   # dconf settings to apply to both gdm and normal users
   dconf-common = {
     "org/gnome/desktop/interface" = {
-      scaling-factor = gvariant.mkUint32 2;
       clock-format = "12h";
       show-battery-percentage = true;
     };
     "org/gnome/desktop/peripherals/touchpad" = {
+      speed = 0.0;
+      accel-profile = "default"; # cursor acceleration; "default" for on, "flat" for off
+      natural-scroll = true;
+
+      send-events = "enabled"; # trackpad enabled state; "enabled" or "disabled"
+      disable-while-typing = false;
       tap-to-click = true;
+    };
+    "org/gnome/desktop/peripherals/mouse" = {
+      speed = -0.6;
+      accel-profile = "default"; # cursor acceleration; "default" for on, "flat" for off
+      natural-scroll = false; # inverted scrolling; true for on, false for off
     };
   };
 in {
@@ -36,7 +46,7 @@ in {
         "org/gnome/shell" = {
           # `just show-desktop-files` is useful for finding these
           favorite-apps = [
-            "firefox.desktop"
+            "io.gitlab.librewolf-community.desktop"
             "org.gnome.Nautilus.desktop"
             "org.gnome.Console.desktop"
             "io.missioncenter.MissionCenter.desktop"
@@ -102,7 +112,7 @@ in {
         };
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
           name = "Firefox";
-          command = "firefox";
+          command = "flatpak run io.gitlab.librewolf-community";
           binding = "<Super>b";
         };
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
