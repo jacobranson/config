@@ -1,3 +1,6 @@
+# any time this file is modified, you must
+# run agenix --rekey and commit everything
+
 let
   public-keys = (import ./ssh-public-keys.nix);
   secrets = {
