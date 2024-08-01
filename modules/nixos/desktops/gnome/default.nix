@@ -43,7 +43,7 @@ in
     services.switcherooControl.enable = true;
 
     services.gnome.gnome-keyring.enable = true;
-    security.pam.services.gdm.enableGnomeKeyring = true;
+    security.pam.services.login.enableGnomeKeyring = true;
     internal.features.impermanence.userDirectories = [
       ".local/share/keyrings"
     ];
