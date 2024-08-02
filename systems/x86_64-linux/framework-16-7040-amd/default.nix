@@ -45,9 +45,9 @@ in {
   };
 
   internal.defaults.boot = {
-    secure-boot = true;
-    silent-boot = true;
-    skip-bootloader = true;
+    secureBoot = true;
+    silentBoot = true;
+    skipBootloader = true;
   };
 
   internal.defaults.networking = {

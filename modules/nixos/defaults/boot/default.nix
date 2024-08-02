@@ -31,9 +31,9 @@ let
 in {
 
   options.internal.defaults.boot = with types; {
-    secure-boot = mkBoolOpt' false;
-    silent-boot = mkBoolOpt' false;
-    skip-bootloader = mkBoolOpt' false;
+    secureBoot = mkBoolOpt' false;
+    silentBoot = mkBoolOpt' false;
+    skipBootloader = mkBoolOpt' false;
   };
 
   # mkMerge ref: https://nixos.org/manual/nixos/stable/#sec-option-definitions-merging
@@ -44,7 +44,7 @@ in {
       boot.loader.efi.canTouchEfiVariables = true;
 
       # secure boot configs are kept here in the common
-      # module because secure-boot must be set to false
+      # module because secureBoot must be set to false
       # for the first system boot.
 
       # sbctl for debugging and troubleshooting Secure Boot.
@@ -55,7 +55,7 @@ in {
       # and stored here.
       internal.features.impermanence.directories = [ "/etc/secureboot" ];
     })
-    (mkIf cfg.secure-boot {
+    (mkIf cfg.secureBoot {
       # Lanzaboote currently replaces the systemd-boot module.
       # This setting is usually set to true in configuration.nix
       # generated at installation time. So we force it to false
@@ -66,7 +66,7 @@ in {
         pkiBundle = "/etc/secureboot";
       };
     })
-    (mkIf cfg.silent-boot {
+    (mkIf cfg.silentBoot {
       # hides boot logs behind a loading screen
       boot.plymouth.enable = true;
       # boot.plymouth.extraConfig = (mkIf hidpi.enable "DeviceScale=2"); TODO test if this is necessary
@@ -77,7 +77,7 @@ in {
       boot.initrd.verbose = false;
       boot.consoleLogLevel = 0;
     })
-    (mkIf cfg.skip-bootloader {
+    (mkIf cfg.skipBootloader {
       # hide the nixos generation boot selection menu by default.
       # can be overridden by holding "Space".
       boot.loader.timeout = 0;

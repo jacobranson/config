@@ -36,7 +36,7 @@ export \
   arch="x86_64-linux" \
   ip="192.168.1.102"
 
-# set secure-boot to false, git add but don't commit
+# set secureBoot to false, git add but don't commit
 
 # ssh in using the temporary password '12345';
 # copy the ssh id of the source machine to the target machine
@@ -119,6 +119,6 @@ gh repo clone config ~/Projects/config
 ### Cleanup
 
 ```bash
-# remove the non-secure-boot first generation
+# remove the non-secureBoot first generation
 nh clean all
 ```
