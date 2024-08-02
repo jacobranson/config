@@ -82,7 +82,7 @@ in {
 
   internal.features.just.enable = true;
   internal.features.snow.enable = true;
-  internal.features.flake.enable = true;
+  # internal.features.flake.enable = true;
   internal.features.nh = {
     enable = true;
     flake = "/home/jacobranson/Projects/config";
