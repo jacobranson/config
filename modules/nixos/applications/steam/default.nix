@@ -3,8 +3,11 @@
 with lib;
 with lib.internal;
 
+# opt-in to the Steam Beta
+
 # refs:
 #   - https://steamcommunity.com/sharedfiles/filedetails/?id=2615011323
+#   - https://github.com/ValveSoftware/steam-for-linux/issues/5460#issuecomment-2253588058
 
 let
   cfg = config.internal.applications.steam;
@@ -27,6 +30,7 @@ in {
 
     services.flatpak.overrides."com.valvesoftware.Steam" = {
       Environment = {
+        # STEAM_FORCE_DESKTOPUI_SCALING = "2.0"; # maybe unneeded with latest beta
         ENABLE_VKBASALT = "1";
         MANGOHUD = "1";
       };
