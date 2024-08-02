@@ -34,7 +34,7 @@ export \
   user="jacobranson" \
   hostname="framework-16-7040-amd" \
   arch="x86_64-linux" \
-  ip="192.168.1.102"
+  ip="192.168.1.64"
 
 # set secureBoot to false, git add but don't commit
 
