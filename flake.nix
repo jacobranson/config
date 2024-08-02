@@ -96,16 +96,16 @@
     # Snowfall Flake is a simplified Nix Flakes CLI application.
     # ref: https://github.com/snowfallorg/flake
     snowfall-flake = {
-			url = "github:snowfallorg/flake";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+      url = "github:snowfallorg/flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Snow is a simplified Nix Package Manager CLI application.
     # ref: https://github.com/snowfallorg/snow/tree/main
     snow = {
-			url = "github:snowfallorg/snow";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+      url = "github:snowfallorg/snow";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # NixOS Conf Editor is an application that allows you to view and edit your NixOS configuration graphically.
     # ref: https://github.com/snowfallorg/nixos-conf-editor
