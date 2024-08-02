@@ -68,23 +68,16 @@ in
     ];
 
     environment.systemPackages = with pkgs; [
-      libsecret  # provides `secret-tool` for managing creds
-      lssecret   # command to list all secrets stored
-      trash-cli  # interact with trash via cli like gnome
-
       # replacement apps
       amberol                  # replaces gnome-music
       clapper                  # replaces totem
       gnome-extension-manager  # replaces gnome-shell-extensions
       mission-center           # replaces gnome-system-monitor
+      key-rack                 # replaces seahorse
 
       # extra apps
       gnomeExtensions.appindicator  # for system tray support
-      kooha   # for screen recording
-    ];
-
-    internal.features.flatpak.packages = [
-      "app.drey.KeyRack"  # replaces seahorse
+      kooha                         # for screen recording
     ];
 
     xdg.portal.enable = true;
