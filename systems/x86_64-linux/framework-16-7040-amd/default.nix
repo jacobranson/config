@@ -73,7 +73,7 @@ in {
   internal.features.impermanence.enable = true;
 
   internal.desktops.gnome.enable = true;
-  internal.features.hidpi.enable = true;
+  # internal.features.hidpi.enable = true; # TODO hidpi removal?
 
   internal.features.pipewire.enable = true;
   internal.features.fwupd.enable = true;
