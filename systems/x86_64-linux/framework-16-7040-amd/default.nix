@@ -25,10 +25,7 @@ let
   secrets = config.age.secrets;
   ssh = config.internal.defaults.ssh;
 in {
-  imports = [
-    ./hardware-configuration.nix
-    ./disk-configuration.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   age.secrets = {
     "users/root/password" = {
@@ -40,6 +37,22 @@ in {
     "users/jacobranson/id_ed25519" = {
       file = ./secrets/users/jacobranson/id_ed25519.age;
     };
+  };
+
+  internal.defaults.disk = {
+    disk = "nvme0n1";
+    swapSize = "32G";
+  };
+
+  internal.defaults.boot = {
+    secure-boot = true;
+    silent-boot = true;
+    skip-bootloader = true;
+  };
+
+  internal.defaults.networking = {
+    hostname = "framework-16-7040-amd";
+    machineid = "b29fbee53c6543c1ab9edd6c378fb880";
   };
 
   internal.defaults.users.users = {
@@ -57,22 +70,10 @@ in {
     };
   };
 
-  internal.defaults.boot = {
-    secure-boot = true;
-    silent-boot = true;
-    skip-bootloader = true;
-  };
-
-  internal.defaults.networking = {
-    hostname = "framework-16-7040-amd";
-    machineid = "b29fbee53c6543c1ab9edd6c378fb880";
-  };
-
   internal.features.impermanence.enable = true;
-  internal.features.hidpi.enable = true;
 
   internal.desktops.gnome.enable = true;
-
+  internal.features.hidpi.enable = true;
   internal.features.pipewire.enable = true;
   internal.features.fwupd.enable = true;
   internal.features.fprintd.enable = true;

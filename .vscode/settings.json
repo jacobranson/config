@@ -13,6 +13,7 @@
     "defaults": "config",
     "game": "console",
     "boot": "target",
+    "disk": "core",
     "networking": "connection",
     "nix": "container",
     "ssh": "secure",

@@ -1,10 +1,7 @@
-{ config, inputs, pkgs, ... }:
+{ disk, espSize, swapSize }:
 
-let
-  disk = "nvme0n1";
-  espSize = "512M";
-  swapSize = "32G";
-in {
+{
+  internal.filesystems.zfs.enable = true;
   disko.devices = {
     disk = {
       "${disk}" = {
@@ -82,6 +79,5 @@ in {
       };
     };
   };
-  internal.filesystems.zfs.enable = true;
   # boot.initrd.secrets."/tmp/nvme0n1.key" = null;
 }
