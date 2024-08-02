@@ -34,22 +34,16 @@ in
     espSize = mkStrOpt' "512M";
     swapSize = mkStrOpt' "8G";
     layout = mkStrOpt' "luks-lvm-btrfs"; # or zfs
-    extraConfig = mkOpt' attrset {};
   };
 
   config = (mkMerge [
     (mkIf (cfg.layout == "luks-lvm-btrfs") (
       import ./layouts/luks-lvm-btrfs.nix {
-        inherit disk;
-        inherit espSize;
-        inherit swapSize;
+        inherit (cfg) disk espSize swapSize;
     }))
     (mkIf (cfg.layout == "zfs") (
       import ./layouts/zfs.nix {
-        inherit disk;
-        inherit espSize;
-        inherit swapSize;
+        inherit (cfg) disk espSize swapSize;
     }))
-    (cfg.extraConfig)
   ]);
 }
