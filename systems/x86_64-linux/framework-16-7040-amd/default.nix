@@ -93,4 +93,5 @@ in {
 
   internal.applications.librewolf.enable = true;
   internal.applications.steam.enable = true;
+  internal.applications.prismlauncher.enable = true;
 }
