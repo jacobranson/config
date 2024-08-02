@@ -38,13 +38,13 @@ in
   };
 
   config = (mkMerge [
-    (mkIf cfg.layout == "luks-lvm-btrfs" (
+    (mkIf (cfg.layout == "luks-lvm-btrfs") (
       import ./layouts/luks-lvm-btrfs.nix {
         inherit disk;
         inherit espSize;
         inherit swapSize;
     }))
-    (mkIf cfg.layout == "zfs" (
+    (mkIf (cfg.layout == "zfs") (
       import ./layouts/zfs.nix {
         inherit disk;
         inherit espSize;
