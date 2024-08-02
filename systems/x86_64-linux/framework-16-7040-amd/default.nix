@@ -74,21 +74,17 @@ in {
 
   internal.desktops.gnome.enable = true;
   internal.features.hidpi.enable = true;
+
   internal.features.pipewire.enable = true;
   internal.features.fwupd.enable = true;
   internal.features.fprintd.enable = true;
-
-  internal.features.flatpak = {
-    enable = true;
-
-    packages = [
-      "io.gitlab.librewolf-community"
-    ];
-  };
+  internal.features.flatpak.enable = true;
 
   internal.features.just.enable = true;
   internal.features.nh = {
     enable = true;
     flake = "/home/jacobranson/Projects/config";
   };
+
+  internal.applications.librewolf.enable = true;
 }
