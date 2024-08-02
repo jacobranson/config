@@ -81,10 +81,15 @@ in {
   internal.features.flatpak.enable = true;
 
   internal.features.just.enable = true;
+  internal.features.snow.enable = true;
+  internal.features.flake.enable = true;
   internal.features.nh = {
     enable = true;
     flake = "/home/jacobranson/Projects/config";
   };
+
+  internal.applications.nixos-conf-editor.enable = true;
+  internal.applications.nix-software-center.enable = true;
 
   internal.applications.librewolf.enable = true;
   internal.applications.steam.enable = true;
