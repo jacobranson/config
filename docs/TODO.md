@@ -1,5 +1,6 @@
 # TODO
 
+- redeploy using same password for luks as default user password, which should automatically decrypt the login keyring
 - zfs auto-decrypt dataset with tpm
 - how to hide mounts for home folders?
 - Use [systemd paths](https://mynixos.com/nixpkgs/options/systemd.paths.%3Cname%3E) to watch for changes to the following files and auto copy them to/from `/persist`
