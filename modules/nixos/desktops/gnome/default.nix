@@ -27,7 +27,6 @@ with lib.internal;
 
 let
   cfg = config.internal.desktops.gnome;
-  hidpi = config.internal.features.hidpi;
 in 
 {
   options.internal.desktops.gnome = with types; {

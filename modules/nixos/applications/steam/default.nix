@@ -30,7 +30,7 @@ in {
 
     services.flatpak.overrides."com.valvesoftware.Steam" = {
       Environment = {
-        # STEAM_FORCE_DESKTOPUI_SCALING = "2.0"; # maybe unneeded with latest beta
+        # STEAM_FORCE_DESKTOPUI_SCALING = "2.0"; # TODO maybe unneeded with latest beta
         ENABLE_VKBASALT = "1";
         MANGOHUD = "1";
       };

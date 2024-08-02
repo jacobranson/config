@@ -25,6 +25,8 @@ with builtins;
 with lib;
 with lib.internal;
 
+# TODO remove this module?
+
 let
   cfg = config.internal.features.hidpi;
 in 
