@@ -82,13 +82,6 @@ in {
       };
     };
   };
-  fileSystems = {
-    "/".neededForBoot = true;
-    "/nix".neededForBoot = true;
-    "/home".neededForBoot = true;
-    "/boot".neededForBoot = true;
-    "/persist".neededForBoot = true;
-  };
   internal.filesystems.zfs.enable = true;
   # boot.initrd.secrets."/tmp/nvme0n1.key" = null;
 }
