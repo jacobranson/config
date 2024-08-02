@@ -3,6 +3,9 @@
 with lib;
 with lib.internal;
 
+# refs:
+#   - https://steamcommunity.com/sharedfiles/filedetails/?id=2615011323
+
 let
   cfg = config.internal.applications.steam;
 in {
@@ -11,13 +14,22 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.steam.enable = true;
+    internal.features.flatpak.packages = [
+      "com.valvesoftware.Steam"
+      "com.valvesoftware.Steam.CompatibilityTool.Boxtron"
+      "com.valvesoftware.Steam.Utility.protontricks"
+      "com.valvesoftware.SteamLink"
+      "org.freedesktop.Platform.VulkanLayer.MangoHud"
+      "org.freedesktop.Platform.VulkanLayer.vkBasalt"
+      "com.valvesoftware.Steam.Utility.gamescope"
+      "net.davidotek.pupgui2"
+    ];
 
-    system.userActivationScripts.makeSteamSymlinks.text = ''
-      ln -sfn ~/Steam/.local/share/Steam/ ~/.local/share/Steam
-      ln -sfn ~/Steam/.steam ~/.steam
-    '';
-
-    internal.features.impermanence.userDirectories = [ "Steam" ];
+    services.flatpak.overrides."com.valvesoftware.Steam" = {
+      Environment = {
+        ENABLE_VKBASALT = "1";
+        MANGOHUD = "1";
+      };
+    };
   };
 }

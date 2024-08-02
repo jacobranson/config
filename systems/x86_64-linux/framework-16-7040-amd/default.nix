@@ -87,4 +87,5 @@ in {
   };
 
   internal.applications.librewolf.enable = true;
+  internal.applications.steam.enable = true;
 }
