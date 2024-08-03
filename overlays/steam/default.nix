@@ -24,14 +24,14 @@ final: prev: {
 
   steam = prev.steam.override {
     extraProfile = ''
-      export STEAM_EXTRA_COMPAT_TOOL_PATHS=${pkgs.steamtinkerlaunch}/bin
-      export JAVA_HOME=${pkgs.jdk.home}/lib/openjdk
+      export STEAM_EXTRA_COMPAT_TOOL_PATHS=${prev.steamtinkerlaunch}/bin
+      export JAVA_HOME=${prev.jdk.home}/lib/openjdk
     '';
     extraBwrapArgs = [
       "--chdir ~ --bind ~/Games ~"
     ];
 
-    extraPkgs = pkgs: with pkgs; [
+    extraPkgs = pkgs: with prev; [
       steamtinkerlaunch thcrap-steam-proton-wrapper jdk
 
       # Steam Tinker Launch mandatory dependencies
