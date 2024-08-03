@@ -83,15 +83,27 @@ in {
       origin = "flathub";
     }];
 
-    system.userActivationScripts.makeSteamSymlinks.text = ''
+    system.userActivationScripts.makeSteamSymlinks.text = let
+      compatibilitytool = (readFile ./compatibilitytool.vdf);
+      toolmanifest = (readFile ./toolmanifest.vdf);
+    in ''
       ln -sfn ~/Games/.local/share/Steam/ ~/.local/share/Steam
       ln -sfn ~/Games/.steam ~/.steam
 
       mkdir -p ~/Games/stl
       ln -sfn ~/Games/stl ~/stl
 
-      mkdir -p ~/Games/.local/share/Steam/compatibilitytools.d/SteamTinkerLaunch
-      ln -sfn /usr/bin/steamtinkerlaunch ~/Games/.local/share/Steam/compatibilitytools.d/SteamTinkerLaunch/steamtinkerlaunch
+      stl=~/Games/.local/share/Steam/compatibilitytools.d/SteamTinkerLaunch
+      mkdir -p $stl
+      ln -sfn /usr/bin/steamtinkerlaunch $stl/steamtinkerlaunch
+
+      cat > $stl/compatibilitytool.vdf << EOL
+      ${compatibilitytool}
+      EOL
+
+      cat > $stl/toolmanifest.vdf << EOL
+      ${toolmanifest}
+      EOL
     '';
 
     internal.features.impermanence.userDirectories = [
