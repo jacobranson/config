@@ -60,7 +60,6 @@ let
     "Public"
     "Templates"
     "Videos"
-    "Games"
   ];
   defaultUserFiles = [];
 in 
