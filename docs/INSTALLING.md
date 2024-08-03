@@ -98,11 +98,11 @@ gh repo clone config ~/Projects/config
 - `sudo sbctl verify` (all but one should be good)
 - reboot mashing F2
 - Select "Administer Secure Boot"
-- Select "Erase all Secure Boot Settings"
+- Enable "Erase all Secure Boot Settings"
 - Enable "Enforce Secure Boot".
 - Press F10 to save and exit
 - reboot mashing F2
-- Config
+- Setup Utility
 - Security
 - TPM Operation - Enable
 - Clear TPM - ON
@@ -113,6 +113,11 @@ gh repo clone config ~/Projects/config
 - `ls -l /sys/firmware/efi/efivars/dbx*` (should output something)
 
 ### TPM LUKS Decryption
+
+This will remove the need for you to type in your LUKS password
+on boot to decrypt your drive. If you set the same LUKS password
+as the primary user password, the GNOME Keychain will auto-unlock
+upon login, as well!
 
 - `ujust _setup-tpm` (removes need to enter luks password; change the device arg if needed)
 - enter passphrase for decrypting disk
