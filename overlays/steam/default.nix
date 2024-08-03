@@ -27,7 +27,7 @@ final: prev: {
       export JAVA_HOME=${prev.jdk.home}/lib/openjdk
     '';
     extraBwrapArgs = [
-      "--chdir ~ --bind ~/Games ~"
+      "--bind ~/Games ~"
     ];
 
     extraPkgs = pkgs: with prev; [
