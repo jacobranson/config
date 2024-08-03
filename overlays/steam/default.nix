@@ -25,8 +25,6 @@ final: prev: {
   steam = prev.steam.override {
     extraProfile = ''
       export JAVA_HOME=${prev.jdk.home}/lib/openjdk
-
-      alias stl="steamtinkerlaunch"
     '';
     extraBwrapArgs = [
       "--chdir ~ --bind ~/Games ~"
