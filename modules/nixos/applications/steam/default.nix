@@ -106,8 +106,8 @@ in {
     }];
 
     system.userActivationScripts.makeSteamSymlinks.text = ''
-      ln -sfh ~/Games/.local/share/Steam/ ~/.local/share/Steam
-      ln -sfh ~/Games/.steam ~/.steam
+      ln -sfn ~/Games/.local/share/Steam/ ~/.local/share/Steam
+      ln -sfn ~/Games/.steam ~/.steam
 
       mkdir -p $STEAM_EXTRA_COMPAT_TOOL_PATHS/SteamTinkerLaunch
 		  ln -sfn ${pkgs.steamtinkerlaunch}/bin/steamtinkerlaunch $STEAM_EXTRA_COMPAT_TOOL_PATHS/SteamTinkerLaunch/steamtinkerlaunch
