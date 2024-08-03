@@ -27,7 +27,6 @@ with lib.internal;
 
 let
   cfg = config.internal.defaults.boot;
-  # hidpi = config.internal.features.hidpi; TODO remove this
 in {
 
   options.internal.defaults.boot = with types; {
@@ -69,7 +68,6 @@ in {
     (mkIf cfg.silentBoot {
       # hides boot logs behind a loading screen
       boot.plymouth.enable = true;
-      # boot.plymouth.extraConfig = (mkIf hidpi.enable "DeviceScale=2"); TODO test if this is necessary
       
       # hacky way to make the system boot without showing logs.
       # can be overridden by pressing "Escape".

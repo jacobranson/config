@@ -28,8 +28,6 @@ with lib.internal;
 # Upstream Steam-Related Issues
 #   - New steam UI does not open if run with DRI_PRIME=1
 #     - https://github.com/ValveSoftware/steam-for-linux/issues/9383
-#   - Steam client does not use GNOME's display scaling (TODO fixed on Steam Beta?)
-#     - https://github.com/ValveSoftware/steam-for-linux/issues/5460#issuecomment-2253588058
 
 # NixOS Steam-Related Issues
 #   - (Packaging Request) Steam Link
@@ -66,10 +64,6 @@ in {
       enable = true;
 
       package = pkgs.steam.override {
-        # withPrimus = true;
-        # withJava = true;
-
-        # TODO is this needed? - export STEAM_FORCE_DESKTOPUI_SCALING=2
         extraProfile = ''
           export JAVA_HOME=${pkgs.jdk.home}/lib/openjdk
         '';
