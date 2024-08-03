@@ -42,7 +42,7 @@ final: prev: {
       rsync scummvm strace usbutils vkbasalt wine winetricks xdg-utils
 
       # Steam Tinker Launch missing optional dependencies
-      # boxtron nyrna vr-video-player
+      # boxtron nyrna replay-sorcery vr-video-player
     ];
   };
 }
