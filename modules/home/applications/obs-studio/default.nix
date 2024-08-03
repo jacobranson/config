@@ -51,5 +51,9 @@ in
         obs-vkcapture
       ];
     };
+
+    internal.features.impermanence.directories = [
+      ".config/obs-studio"
+    ];
   };
 }
