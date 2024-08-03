@@ -86,7 +86,12 @@ in {
     system.userActivationScripts.makeSteamSymlinks.text = ''
       ln -sfn ~/Games/.local/share/Steam/ ~/.local/share/Steam
       ln -sfn ~/Games/.steam ~/.steam
+
+      mkdir -p ~/Games/.stl
       ln -sfn ~/Games/.stl ~/stl
+
+      mkdir -p ~/Games/compatibilitytools.d/SteamTinkerLaunch
+      ln -sfn ${pkgs.steamtinkerlaunch}/bin/steamtinkerlaunch ~/Games/compatibilitytools.d/SteamTinkerLaunch/steamtinkerlaunch
     '';
 
     internal.features.impermanence.userDirectories = [

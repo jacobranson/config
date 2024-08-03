@@ -24,7 +24,7 @@ final: prev: {
 
   steam = prev.steam.override {
     extraProfile = ''
-      export STEAM_EXTRA_COMPAT_TOOL_PATHS=${prev.steamtinkerlaunch}/bin
+      export STEAM_EXTRA_COMPAT_TOOL_PATHS=~/Games/compatibilitytools.d
       export JAVA_HOME=${prev.jdk.home}/lib/openjdk
     '';
     extraBwrapArgs = [
