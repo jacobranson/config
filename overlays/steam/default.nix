@@ -39,6 +39,8 @@
 
 # `steam-run bash` lets you explore the steam environment
 
+with builtins;
+
 final: prev: {
   steam = prev.steam.override {
     extraProfile = let
