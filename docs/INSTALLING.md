@@ -78,6 +78,8 @@ fprintd-enroll
 ujust _setup-ssh
 ```
 
+### Wait for Flatpaks to install...
+
 ### GitHub CLI & Cloning Config
 
 ```bash
@@ -122,3 +124,10 @@ gh repo clone config ~/Projects/config
 # remove the non-secureBoot first generation
 nh clean all
 ```
+
+### Steam
+
+- Sign in to Steam
+- Opt in to the Steam Beta
+- Force the use of compat tools
+- Set "Steam Tinker Launch" as the default compat tool
