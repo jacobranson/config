@@ -26,5 +26,5 @@
   internal.features.devbox.enable = true;
   internal.features.gh.enable = true;
   internal.applications.vscode.enable = true;
-  internal.applications.obs.enable = true;
+  internal.applications.obs-studio.enable = true;
 }

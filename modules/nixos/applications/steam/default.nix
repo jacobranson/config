@@ -62,17 +62,12 @@ in {
 
   config = mkIf cfg.enable {
 
-    inputs.nixpkgs.config.allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) [
-        "steam" "steam-original" "steam-run"
-      ];
-
     programs.steam = {
       enable = true;
 
       package = pkgs.steam.override {
-        withPrimus = true;
-        withJava = true;
+        # withPrimus = true;
+        # withJava = true;
 
         # TODO is this needed? - export STEAM_FORCE_DESKTOPUI_SCALING=2
         extraProfile = ''
@@ -82,8 +77,8 @@ in {
           "--chdir ~ --bind ~/Games ~"
         ];
 
-        extraPkgs = pkgs: [
-          steamtinkerlaunch thcrap-proton bumblebee glxinfo jdk
+        extraPkgs = pkgs: with pkgs; [
+          steamtinkerlaunch thcrap-steam-proton-wrapper jdk
 
           # Steam Tinker Launch mandatory dependencies
           gawk bash git gnumake procps unzip wget xdotool
@@ -109,7 +104,6 @@ in {
     # Steam Tinker Launch optional dependencies
     programs.gamemode.enable = true;
     programs.gamescope.enable = true;
-    services.replay-sorcery.enable = true;
 
     # Steam Link isn't packaged in Nix
     internal.features.flatpak.packages = [{

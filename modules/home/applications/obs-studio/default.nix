@@ -45,7 +45,7 @@ in
         obs-backgroundremoval
         obs-composite-blur
         obs-freeze-filter
-        obs-input-overlay
+        input-overlay
         obs-mute-filter
         obs-pipewire-audio-capture
         obs-vkcapture
