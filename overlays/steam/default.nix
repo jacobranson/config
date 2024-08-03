@@ -13,63 +13,21 @@
   ...
 }:
 
-# Upstream Steam-Related Issues
-#   - New steam UI does not open if run with DRI_PRIME=1
-#     - https://github.com/ValveSoftware/steam-for-linux/issues/9383
-
-# NixOS Steam-Related Issues
-#   - (Packaging Request) Steam Link
-#     - https://github.com/NixOS/nixpkgs/issues/77026
-#   - (Packaging Request) SteamPlay Compatibility Tools: Proton-GE, Boxtron, Roberta, Luxtorpeda
-#     - https://github.com/NixOS/nixpkgs/issues/73323
-#   - (Packaging Request) Nyrna
-#     - https://github.com/NixOS/nixpkgs/issues/212079
-
-# About Steam Tinker Launch
-#   - https://github.com/sonic2kk/steamtinkerlaunch
-#   - https://github.com/sonic2kk/steamtinkerlaunch?tab=readme-ov-file#how-do-i-use-it
-#   - https://github.com/sonic2kk/steamtinkerlaunch/wiki
-#   - https://github.com/sonic2kk/steamtinkerlaunch/wiki/Installation#optional-dependencies
-#   - https://gist.github.com/jakehamilton/632edeb9d170a2aedc9984a0363523d3
-
-# About Touhou Community Reliant Automatic Patcher (thcrap)
-#   - https://github.com/thpatch/thcrap
-#   - https://github.com/tactikauan/thcrap-steam-proton-wrapper
-#   - https://github.com/tactikauan/thcrap-steam-proton-wrapper?tab=readme-ov-file#how-to-use
-
-# `steam-run bash` lets you explore the steam environment
-
-with builtins;
-
 final: prev: {
+  # For example, to pull a package from unstable NixPkgs make sure you have the
+  # input `unstable = "github:nixos/nixpkgs/nixos-unstable"` in your flake.
+  # Then, uncomment the following line:
+  # inherit (channels.unstable) chromium;
+  #
+  # Or, to add a package that is not in Nixpkgs currently via an external flake:
+  # my-package = inputs.my-input.packages.${prev.system}.my-package;
+
   steam = prev.steam.override {
-    extraProfile = let
-      compatibilitytool = (readFile ./compatibilitytool.vdf);
-      toolmanifest = (readFile ./toolmanifest.vdf);
-    in ''
-      stlpath=~/.local/share/Steam/compatibilitytools.d/SteamTinkerLaunch
-      mkdir -p $stlpath
-
-      if ! [ -L $stlpath/steamtinkerlaunch ]; then
-        ln -sfn ${prev.steamtinkerlaunch}/bin/steamtinkerlaunch $stlpath/steamtinkerlaunch
-      fi
-
-      if ! [ -f $stlpath/compatibilitytool.vdf ]; then
-        cat > $stlpath/compatibilitytool.vdf << EOL
-          ${compatibilitytool}
-        EOL
-      fi
-
-      if ! [ -f $stlpath/toolmanifest.vdf ]; then
-        cat > $stlpath/toolmanifest.vdf << EOL
-          ${toolmanifest}
-        EOL
-      fi
-
+    extraProfile = ''
       export JAVA_HOME=${prev.jdk.home}/lib/openjdk
     '';
     extraBwrapArgs = [
-      "--bind ~/Games ~"
+      "--chdir ~ --bind ~/Games ~"
     ];
 
     extraPkgs = pkgs: with prev; [
@@ -84,7 +42,7 @@ final: prev: {
       rsync scummvm strace usbutils vkbasalt wine winetricks xdg-utils
 
       # Steam Tinker Launch missing optional dependencies
-      # boxtron nyrna replay-sorcery vr-video-player 
+      # boxtron nyrna vr-video-player
     ];
   };
 }
