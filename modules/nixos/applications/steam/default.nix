@@ -63,29 +63,7 @@ in {
     programs.steam = {
       enable = true;
 
-      package = pkgs.steam.override {
-        extraProfile = ''
-          export JAVA_HOME=${pkgs.jdk.home}/lib/openjdk
-        '';
-        extraBwrapArgs = [
-          "--chdir ~ --bind ~/Games ~"
-        ];
-
-        extraPkgs = pkgs: with pkgs; [
-          steamtinkerlaunch thcrap-steam-proton-wrapper jdk
-
-          # Steam Tinker Launch mandatory dependencies
-          gawk bash git gnumake procps unzip wget xdotool
-          xorg.xprop xorg.xrandr vim-full xorg.xwininfo yad
-
-          # Steam Tinker Launch optional dependencies
-          gdb imagemagick jq libnotify mangohud nettools p7zip pev
-          rsync scummvm strace usbutils vkbasalt wine winetricks xdg-utils
-
-          # Steam Tinker Launch missing optional dependencies
-          # boxtron nyrna vr-video-player
-        ];
-      };
+      # also see overlays/steam/default.nix
 
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
@@ -108,13 +86,11 @@ in {
     system.userActivationScripts.makeSteamSymlinks.text = ''
       ln -sfn ~/Games/.local/share/Steam/ ~/.local/share/Steam
       ln -sfn ~/Games/.steam ~/.steam
-
-      mkdir -p $STEAM_EXTRA_COMPAT_TOOL_PATHS/SteamTinkerLaunch
-		  ln -sfn ${pkgs.steamtinkerlaunch}/bin/steamtinkerlaunch $STEAM_EXTRA_COMPAT_TOOL_PATHS/SteamTinkerLaunch/steamtinkerlaunch
+      ln -sfn ~/Games/.stl ~/stl
     '';
 
     internal.features.impermanence.userDirectories = [
-      "Games" "stl"
+      "Games"
     ];
 
     environment.systemPackages = with pkgs; [
