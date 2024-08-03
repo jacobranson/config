@@ -90,8 +90,8 @@ in {
       mkdir -p ~/Games/.stl
       ln -sfn ~/Games/.stl ~/stl
 
-      mkdir -p ~/Games/.local/share/Steam/compatibilitytools.d/SteamTinkerLaunch
-      ln -sfn ${pkgs.steamtinkerlaunch}/bin/steamtinkerlaunch ~/Games/.local/share/Steam/compatibilitytools.d/SteamTinkerLaunch/steamtinkerlaunch
+      mkdir -p ~/Games/compatibilitytools.d/SteamTinkerLaunch
+      ln -sfn ${pkgs.steamtinkerlaunch}/bin/steamtinkerlaunch ~/Games/compatibilitytools.d/SteamTinkerLaunch/steamtinkerlaunch
     '';
 
     internal.features.impermanence.userDirectories = [
