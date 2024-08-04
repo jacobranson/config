@@ -21,8 +21,6 @@
   ...
 }:
 
-# ref: https://nixos.wiki/wiki/PipeWire
-
 with builtins;
 with lib;
 with lib.internal;
@@ -38,6 +36,7 @@ in
   config = mkIf cfg.enable {
     services.printing = {
       enable = true;
+      startWhenNeeded = false;
       drivers = with pkgs; [ gutenprint ];
     };
     services.avahi = {
