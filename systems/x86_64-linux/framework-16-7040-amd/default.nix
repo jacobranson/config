@@ -78,6 +78,7 @@ in {
   internal.features.fwupd.enable = true;
   internal.features.fprintd.enable = true;
   internal.features.flatpak.enable = true;
+  internal.features.printing.enable = true;
 
   internal.features.just.enable = true;
   internal.features.snow.enable = true;
