@@ -36,7 +36,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.printing.enable = true;
+    services.printing = {
+      enable = true;
+      drivers = with pkgs; [ gutenprint ];
+    };
     services.avahi = {
       enable = true;
       nssmdns4 = true;
