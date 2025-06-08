@@ -50,7 +50,7 @@ in
     services.xserver.excludePackages = [ pkgs.xterm ];
     environment.gnome.excludePackages = with pkgs; [
       # replaced apps
-      gnome.gnome-music       # replaced by amberol
+      gnome-music       # replaced by amberol
       totem                   # replaced by clapper
       epiphany                # replaced by firefox
       gnome-system-monitor    # replaced by mission-center
