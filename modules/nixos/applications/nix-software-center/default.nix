@@ -40,7 +40,7 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      nix-software-center
+      # nix-software-center
     ];
   };
 }

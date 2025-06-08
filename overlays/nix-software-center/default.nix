@@ -22,5 +22,5 @@ final: prev: {
   # Or, to add a package that is not in Nixpkgs currently via an external flake:
   # my-package = inputs.my-input.packages.${prev.system}.my-package;
 
-  nix-software-center = inputs.nix-software-center.packages.${prev.system}.nix-software-center;
+  # nix-software-center = inputs.nix-software-center.packages.${prev.system}.nix-software-center;
 }
