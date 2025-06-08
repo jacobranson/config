@@ -81,7 +81,7 @@ in {
   internal.features.printing.enable = true;
 
   internal.features.just.enable = true;
-  internal.features.snow.enable = true;
+  internal.features.snow.enable = false;
   # internal.features.flake.enable = true;
   internal.features.nh = {
     enable = true;

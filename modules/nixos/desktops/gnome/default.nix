@@ -37,6 +37,10 @@ in
     services.xserver.enable = true;
     services.desktopManager.gnome.enable = true;
     services.displayManager.gdm.enable = true;
+    extraGSettingsOverrides = ''
+      [org.gnome.mutter]
+      experimental-features=['scale-monitor-framebuffer']
+    '';
 
     services.libinput.enable = true;
     services.switcherooControl.enable = true;

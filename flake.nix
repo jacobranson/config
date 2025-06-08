@@ -102,10 +102,10 @@
 
     # Snow is a simplified Nix Package Manager CLI application.
     # ref: https://github.com/snowfallorg/snow/tree/main
-    snow = {
-      url = "github:snowfallorg/snow";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #snow = {
+    #  url = "github:snowfallorg/snow";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     # NixOS Conf Editor is an application that allows you to view and edit your NixOS configuration graphically.
     # ref: https://github.com/snowfallorg/nixos-conf-editor
@@ -124,14 +124,14 @@
     # Nix Flatpak is a declarative flatpak manager for NixOS.
     # ref: https://github.com/gmodena/nix-flatpak
     nix-flatpak = {
-      url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
+      url = "github:gmodena/nix-flatpak/?ref=latest";
       # `inputs.nixpkgs.follows` is unnecessary here because this flake doesn't have an input for it.
     };
 
     # Lanzaboote enables Secure Boot for NixOS.
     # ref: https://github.com/nix-community/lanzaboote
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
+      url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

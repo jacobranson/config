@@ -35,7 +35,7 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      snow
+      #snow
     ];
   };
 }
