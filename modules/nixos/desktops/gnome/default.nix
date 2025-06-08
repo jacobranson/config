@@ -59,11 +59,11 @@ in
       # extraneous apps
       gnome-tour                    # GNOME Welcome app
       yelp                          # GNOME Help app
-      gnome.gnome-shell-extensions  # default extensions
-      gnome.gnome-contacts
-      gnome.gnome-weather
-      gnome.gnome-clocks
-      gnome.gnome-maps
+      gnome-shell-extensions  # default extensions
+      gnome-contacts
+      gnome-weather
+      gnome-clocks
+      gnome-maps
     ];
 
     environment.systemPackages = with pkgs; [
