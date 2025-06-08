@@ -40,7 +40,7 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      nixos-conf-editor
+      #nixos-conf-editor
     ];
   };
 }

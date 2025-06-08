@@ -88,7 +88,7 @@ in {
     flake = "/home/jacobranson/Projects/config";
   };
 
-  internal.applications.nixos-conf-editor.enable = true;
+  internal.applications.nixos-conf-editor.enable = false;
   internal.applications.nix-software-center.enable = false;
 
   internal.applications.librewolf.enable = true;

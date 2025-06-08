@@ -109,10 +109,10 @@
 
     # NixOS Conf Editor is an application that allows you to view and edit your NixOS configuration graphically.
     # ref: https://github.com/snowfallorg/nixos-conf-editor
-    nixos-conf-editor = {
-      url = "github:snowfallorg/nixos-conf-editor";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #nixos-conf-editor = {
+    #  url = "github:snowfallorg/nixos-conf-editor";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     # Nix Software Center allows you to browse and download Nix applications graphically.
     # ref: https://github.com/snowfallorg/nix-software-center
