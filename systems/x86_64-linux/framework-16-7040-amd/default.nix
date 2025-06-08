@@ -89,7 +89,7 @@ in {
   };
 
   internal.applications.nixos-conf-editor.enable = true;
-  internal.applications.nix-software-center.enable = true;
+  internal.applications.nix-software-center.enable = false;
 
   internal.applications.librewolf.enable = true;
   internal.applications.steam.enable = true;
