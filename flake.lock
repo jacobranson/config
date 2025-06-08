@@ -675,28 +675,6 @@
         "type": "github"
       }
     },
-    "nix-software-center": {
-      "inputs": {
-        "nixos-appstream-data": "nixos-appstream-data",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "utils": "utils"
-      },
-      "locked": {
-        "lastModified": 1730517716,
-        "narHash": "sha256-hq3jlW5lyT2RkWhJ2/Oo+dt9FXtJ47zDDBBk8A8abMo=",
-        "owner": "snowfallorg",
-        "repo": "nix-software-center",
-        "rev": "216eb549f1ec222c2877d2194f2987527954f2c4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "snowfallorg",
-        "repo": "nix-software-center",
-        "type": "github"
-      }
-    },
     "nixlib": {
       "locked": {
         "lastModified": 1736643958,
@@ -715,11 +693,9 @@
     "nixos-appstream-data": {
       "inputs": {
         "flake-utils": [
-          "nix-software-center",
           "utils"
         ],
         "nixpkgs": [
-          "nix-software-center",
           "nixpkgs"
         ]
       },
@@ -865,7 +841,6 @@
         "lanzaboote": "lanzaboote",
         "nix-flatpak": "nix-flatpak",
         "nix-index-database": "nix-index-database",
-        "nix-software-center": "nix-software-center",
         "nixos-conf-editor": "nixos-conf-editor",
         "nixos-generators": "nixos-generators",
         "nixos-hardware": "nixos-hardware",

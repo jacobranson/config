@@ -116,10 +116,10 @@
 
     # Nix Software Center allows you to browse and download Nix applications graphically.
     # ref: https://github.com/snowfallorg/nix-software-center
-    nix-software-center = {
-      url = "github:snowfallorg/nix-software-center";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #nix-software-center = {
+    #  url = "github:snowfallorg/nix-software-center";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     # Nix Flatpak is a declarative flatpak manager for NixOS.
     # ref: https://github.com/gmodena/nix-flatpak
